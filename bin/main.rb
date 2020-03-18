@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-puts 'Hello World!'
 
 class Interface
   def initialize()
@@ -27,11 +26,11 @@ class Interface
   end
 
   def user_inputs
+    game_over = false
+    until game_over == true
     @players.each do |player|
       puts "#{player} pick a number between 0-8"
       input = gets.chomp
-      puts @players[0]
-      puts player
       if player.include?(@players[0])
         @field[input.to_i] = 'X'
         display_field
@@ -39,7 +38,9 @@ class Interface
         @field[input.to_i] = 'O'
       end
     end
-    display_field
+    game_over = false
+end
+display_field
   end
 
   def update_input
