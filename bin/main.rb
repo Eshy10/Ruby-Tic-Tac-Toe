@@ -33,12 +33,15 @@ class Interface
       puts "#{player} pick a number between 0-8"
       input = gets.chomp
       if player.include?(@players[0])
-        @field[input.to_i] = 'X'
+        # @field[input.to_i] = 'X'
+        a = Logic.new
+        a.occupied?(@field, input.to_i, 'X')
         display_field
         a = Logic.new
       return game_over = true if a.winning_condition(@field)
       else
-        @field[input.to_i] = 'O'
+        a = Logic.new
+        a.occupied?(@field, input.to_i, 'O')
         display_field
         a = Logic.new
       return game_over = true if a.winning_condition(@field)

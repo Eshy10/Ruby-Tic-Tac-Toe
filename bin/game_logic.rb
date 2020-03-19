@@ -26,8 +26,18 @@ class Logic
     elsif (arr[2] == arr[4] && arr[4] == arr[6]) && !arr.values_at(2, 4, 6).include?("_")
       puts 'you won on the right diagonal'
       return true
+      elsif !arr.include?("_")
+      puts 'you lose'
+      return true
     end
   end
 
+  def occupied?(arr, index, sym)
+  if !arr[index].include?("_")
+     puts "Pick another value, cell occupied"
+  else
+    arr[index.to_i] = sym
+  end
+  end
 
 end
