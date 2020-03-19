@@ -2,25 +2,32 @@
 class Logic
 
     def winning_condition(arr)
-     if arr[0] == arr[1] && arr[1] == arr[2]
+     if( arr[0] == arr[1] && arr[1] == arr[2]) && !arr[0..2].any?("_")
       puts 'you won on first line'
-     elsif arr[3] == arr[4] && arr[4] == arr[5]
+      return true
+     elsif (arr[3] == arr[4] && arr[4] == arr[5]) && !arr[3..5].any?("_")
       puts 'you won on the second line'
-    elsif arr[6] == arr[7] && arr[7] == arr[8]
+      return true
+    elsif (arr[6] == arr[7] && arr[7] == arr[8]) && !arr[6..8].any?("_")
       puts 'you won on the third line'
-    elsif arr[0] == arr[3] && arr[3] == arr[6]
+      return true
+    elsif (arr[0] == arr[3] && arr[3] == arr[6]) && !arr.values_at(0, 3, 6).include?("_")
       puts 'you won on the first column'
-    elsif arr[1] == arr[4] && arr[4] == arr[7]
+      return true
+    elsif (arr[1] == arr[4] && arr[4] == arr[7]) && !arr.values_at(1, 4, 7).include?("_")
       puts 'you won on the second column'
-    elsif arr[2] == arr[5] && arr[5] == arr[8]
+      return true
+    elsif (arr[2] == arr[5] && arr[5] == arr[8]) && !arr.values_at(2, 5, 8).include?("_")
       puts 'you won on the third column'
-    elsif arr[0] == arr[4] && arr[4] == arr[8]
+      return true
+    elsif (arr[0] == arr[4] && arr[4] == arr[8]) && !arr.values_at(0, 4, 8).include?("_")
       puts 'you won on the left diagonal'
-    elsif arr[2] == arr[4] && arr[4] == arr[6]
+       return true
+    elsif (arr[2] == arr[4] && arr[4] == arr[6]) && !arr.values_at(2, 4, 6).include?("_")
       puts 'you won on the right diagonal'
-    else
-      puts 'you lose'
+      return true
     end
   end
+
 
 end

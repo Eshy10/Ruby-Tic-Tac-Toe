@@ -36,15 +36,14 @@ class Interface
         @field[input.to_i] = 'X'
         display_field
         a = Logic.new
-        a.winning_condition(@field)
+      return game_over = true if a.winning_condition(@field)
       else
         @field[input.to_i] = 'O'
         display_field
         a = Logic.new
-        a.winning_condition(@field)
+      return game_over = true if a.winning_condition(@field)
       end
     end
-      game_over = false
     end
   end
 
