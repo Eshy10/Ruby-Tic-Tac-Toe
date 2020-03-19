@@ -33,9 +33,13 @@ class Logic
 
   def occupied?(arr, index, sym)
     if !arr[index].include?('_')
-      puts 'Pick another value, cell occupied, are you blind?'
+      puts 'Pick another value between 0 and 8, cell occupied, are you blind?'
       index = gets.chomp.to_i
-      occupied?(arr, index, sym)
+      if index > 8
+        puts 'Please pick a number between 0 and 8!'
+        index = gets.chomp.to_i
+        occupied?(arr, index, sym)
+      end
     else
       arr[index.to_i] = sym
     end

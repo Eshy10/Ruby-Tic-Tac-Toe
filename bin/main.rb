@@ -20,8 +20,16 @@ class Interface
     puts 'The Tic-Tac-Toe Game requires two players'
     puts 'Player_1, please enter your name'
     player1 = gets.chomp
+    if player1.empty?
+      puts 'Please enter your name!'
+      player1 = gets.chomp
+    end
     puts 'Player_2, please enter your name'
     player2 = gets.chomp
+    if player2.empty?
+      puts 'Please enter your name!'
+      player2 = gets.chomp
+    end
     @players << player1
     @players << player2
     @players
