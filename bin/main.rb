@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require_relative "./game_logic.rb"
 
 class Interface
   def initialize()
@@ -34,13 +35,17 @@ class Interface
       if player.include?(@players[0])
         @field[input.to_i] = 'X'
         display_field
+        a = Logic.new
+        a.winning_condition(@field)
       else
         @field[input.to_i] = 'O'
+        display_field
+        a = Logic.new
+        a.winning_condition(@field)
       end
     end
-    game_over = false
-end
-display_field
+      game_over = false
+    end
   end
 
   def update_input
@@ -49,5 +54,6 @@ display_field
 end
 
 new_game = Interface.new
+p new_game
 new_game.user_details
 new_game.user_inputs

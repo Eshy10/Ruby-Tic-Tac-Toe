@@ -1,9 +1,5 @@
-require_relative 'main.rb'
 
 class Logic
-    def initialize
-        
-    end
 
     def winning_condition(arr)
      if arr[0] == arr[1] && arr[1] == arr[2]
@@ -28,6 +24,3 @@ class Logic
   end
 
 end
-
-new_game = Logic.new
-new_game.winning_condition(["x", "X", "X"])
