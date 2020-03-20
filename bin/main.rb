@@ -2,6 +2,7 @@
 require_relative '../lib/game.rb'
 require_relative '../lib/player.rb'
 
+# rubocop:disable Metrics/MethodLength,Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 class Interface
   def initialize
     @field = %w[_ _ _ _ _ _ _ _ _]
@@ -70,16 +71,28 @@ class Interface
         if player.include?(players[0])
           occupied?(@field, input.to_i, 'X')
           display_field
-          return game_over = true if a.winning_condition(@field, players[0])
+          if a.winning_condition(@field, players[0])
+            puts " #{players[0]} won the game"
+            return game_over = true
+          elsif !@field.include?('_')
+            puts 'It is a draw'
+            return game_over = true
+          end
         else
           occupied?(@field, input.to_i, 'O')
           display_field
-          return game_over = true if a.winning_condition(@field, players[1])
+          if a.winning_condition(@field, players[1])
+            puts " #{players[1]} won the game"
+            return game_over = true
+          elsif !@field.include?('_')
+            puts 'It is a draw'
+            return game_over = true
+          end
         end
       end
     end
   end
 end
-
+# rubocop:enable Metrics/MethodLength,Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 new_game = Interface.new
 new_game.user_inputs
