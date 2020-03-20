@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-## Instructions to play the Game
+## Game Rules
 
 - Two players are required to play the game.
 - The first player is X and the second player is O.
