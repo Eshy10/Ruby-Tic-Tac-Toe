@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
-puts 'Hello World!'
-
+require_relative './game_logic.rb'
 class Interface
+  attr_reader :players
+
   def initialize()
     @field = %w[_ _ _ _ _ _ _ _ _]
     @players = []
@@ -27,19 +28,24 @@ class Interface
   end
 
   def user_inputs
-    @players.each do |player|
-      puts "#{player} pick a number between 0-8"
-      input = gets.chomp
-      puts @players[0]
-      puts player
-      if player.include?(@players[0])
-        @field[input.to_i] = 'X'
-        display_field
-      else
-        @field[input.to_i] = 'O'
+    a = Logic.new
+    game_over = false
+    until game_over == true
+      @players.each do |player|
+        puts "#{player} pick a number between 0-8"
+        input = gets.chomp
+        input = a.number_valid?(input.to_i, player)
+        if player.include?(@players[0])
+          a.occupied?(@field, input.to_i, 'X')
+          display_field
+          return game_over = true if a.winning_condition(@field, @players[0])
+        else
+          a.occupied?(@field, input.to_i, 'O')
+          display_field
+          return game_over = true if a.winning_condition(@field, players[1])
+        end
       end
     end
-    display_field
   end
 
   def update_input
@@ -48,5 +54,6 @@ class Interface
 end
 
 new_game = Interface.new
+p new_game
 new_game.user_details
 new_game.user_inputs
