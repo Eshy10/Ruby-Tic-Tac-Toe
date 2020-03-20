@@ -1,5 +1,5 @@
 # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
-class Logic
+class Game
   def winning_condition(arr, player_name)
     if (arr[0] == arr[1] && arr[1] == arr[2]) && arr[0..2].none?('_')
       puts "#{player_name} won on first line"
@@ -33,7 +33,7 @@ class Logic
 
   def occupied?(arr, index, sym)
     if !arr[index].include?('_')
-      puts 'Pick another value between 0 and 8, cell occupied, are you blind?'
+      puts 'Pick another value between 0 and 8, cell occupied, dont be a dummy!'
       index = gets.chomp.to_i
       if index > 8
         puts 'Please pick a number between 0 and 8!'
