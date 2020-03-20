@@ -30,29 +30,5 @@ class Game
       true
     end
   end
-
-  def occupied?(arr, index, sym)
-    if !arr[index].include?('_')
-      puts 'Pick another value between 0 and 8, cell occupied, dont be a dummy!'
-      index = gets.chomp.to_i
-      if index > 8
-        puts 'Please pick a number between 0 and 8!'
-        index = gets.chomp.to_i
-        occupied?(arr, index, sym)
-      end
-    else
-      arr[index.to_i] = sym
-    end
-  end
-
-  def number_valid?(number, player_name)
-    if number > 8
-      puts "#{player_name} put a value less then 9"
-      number = gets.chomp.to_i
-      number_valid?(number, player_name)
-    else
-      number
-    end
-  end
 end
 # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
