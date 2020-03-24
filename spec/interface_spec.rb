@@ -3,7 +3,7 @@ require_relative '../lib/player.rb'
 
 describe Interface do
     let(:interface) { Interface.new }
-    # let(:player) { Players.new }
+     let(:player) { Players.new }
   describe '#initialize' do
     it 'should set @field to an array' do
       field = interface.instance_variable_get(:@field)  
@@ -13,13 +13,8 @@ describe Interface do
     end
 
     describe '#user_details' do
-      it 'it should call gets.chomp to get input from the user' do
-        input = 
-        allow(player).to receive(:gets).and_return(input)
-
-        expect(input).to receive(:chomp)
-        expect(player).to receive(:gets)
-        player.get_move
+      it 'should return an array of two players' do
+      expect(interface.user_details).not_to eq([nil])
       end 
     end
 end

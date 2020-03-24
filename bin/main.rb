@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 require_relative '../lib/game.rb'
 require_relative '../lib/player.rb'
 
@@ -94,5 +93,4 @@ class Interface
   end
 end
 # rubocop:enable Metrics/MethodLength,Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
-# new_game = Interface.new
-# new_game.user_inputs
+
