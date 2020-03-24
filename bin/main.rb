@@ -94,5 +94,5 @@ class Interface
   end
 end
 # rubocop:enable Metrics/MethodLength,Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
-new_game = Interface.new
-new_game.user_inputs
+# new_game = Interface.new
+# new_game.user_inputs
