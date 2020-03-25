@@ -14,33 +14,41 @@ describe Interface do
 
   describe '#user_details' do
     it 'should return an array of two players' do
-      input = interface.user_details
-      expect(input).not_to eq([nil])
-      expect(input.all?(String)).to eq(true)
+      @inter = double('Inter')
+      allow(@inter).to receive(:user_details).and_return([])
+      result = @inter.user_details
+      expect(result).not_to eq([nil])
+      expect(result.all?(String)).to eq(true)
     end
   end
 
   describe '#occupied?' do
     it 'should check if the cell is occupied with number between 0 and 8' do
-      arr = %w[_ _ _ _ _ _ _ _ _]
-      sym = 'X'
-      index = gets.chomp.to_i
-      expect(interface.occupied?(arr, index, sym)).not_to eq('_')
-      expect(arr[index]).to eq(sym)
+      @inter = double('Inter')
+      allow(@inter).to receive(:occupied?).and_return('')
+      result = @inter.occupied?
+      expect(result).not_to eq('_')
+      expect(result).to eq('')
     end
   end
 
   describe '#number_valid?' do
     it 'should check if the user input is valid' do
-      index = gets.chomp.to_i
-      player = 'me'
-      expect(interface.number_valid?(index, player)).to be < 8
+      @inter = double('Inter')
+      allow(@inter).to receive(:number_valid?).and_return(rand(0..8))
+      result = @inter.number_valid?
+      expect(result).to be <= 8
+      expect(result).not_to be > 8
     end
   end
 
   describe '#user_inputs' do
     it 'should check if user win the game' do
-      expect(interface.user_inputs).to eq(true)
+      @inter = double('Inter')
+      allow(@inter).to receive(:user_inputs).and_return(true)
+      result = @inter.user_inputs
+      expect(result).to eq(true)
+      expect(result).not_to eq(false)
     end
   end
 end
