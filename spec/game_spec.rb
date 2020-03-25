@@ -15,7 +15,7 @@ RSpec.describe Game do
   let(:game) { Game.new }
 
   describe '#winning_condition' do
-    context 'when the condition is winning' do
+    context 'when the list of user input generate a winning condition' do
       it 'should return true' do
         expect(game.winning_condition(array_1)).to eq(true)
         expect(game.winning_condition(array_2)).to eq(true)
@@ -27,9 +27,8 @@ RSpec.describe Game do
       end
     end
 
-    context 'when condition is not winning' do
+    context 'when the list of user input does not generate a winning condition' do
       it 'should return false' do
-        game = Game.new
         expect(game.winning_condition(array_4)).not_to eq(true)
         expect(game.winning_condition(array_9)).not_to eq(true)
       end

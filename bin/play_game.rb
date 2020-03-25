@@ -5,3 +5,4 @@ require_relative '../lib/game.rb'
 
 new_game = Interface.new
 new_game.user_inputs
+new_game.play_again

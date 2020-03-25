@@ -51,4 +51,14 @@ describe Interface do
       expect(result).not_to eq(false)
     end
   end
+
+  describe '#play_again' do
+    it 'should check if user want to be play again' do
+      @inter = double('Inter')
+      allow(@inter).to receive(:play_again).and_return(true)
+      result = @inter.play_again
+      expect(result).to eq(true)
+      expect(result).not_to eq(false)
+    end
+  end
 end

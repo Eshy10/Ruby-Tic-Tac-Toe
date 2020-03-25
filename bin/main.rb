@@ -16,7 +16,7 @@ class Interface
   end
 
   def user_details
-    b = Players.new
+    new_players = Players.new
     puts 'The Tic-Tac-Toe Game requires two players'
     puts 'Player_1, please enter your name'
     player1 = gets.chomp
@@ -30,7 +30,7 @@ class Interface
       puts 'Please enter your name!'
       player2 = gets.chomp
     end
-    players = b.players(player1, player2)
+    players = new_players.players(player1, player2)
     players
   end
 
@@ -41,8 +41,8 @@ class Interface
       if index > 8
         puts 'Please pick a number between 0 and 8!'
         index = gets.chomp.to_i
-        occupied?(arr, index, sym)
       end
+      occupied?(arr, index, sym)
     else
       arr[index.to_i] = sym
     end
@@ -59,7 +59,7 @@ class Interface
   end
 
   def user_inputs
-    a = Game.new
+    new_game = Game.new
     game_over = false
     players = user_details
     until game_over == true
@@ -70,7 +70,7 @@ class Interface
         if player.include?(players[0])
           occupied?(@field, input.to_i, 'X')
           display_field
-          if a.winning_condition(@field, players[0])
+          if new_game.winning_condition(@field, players[0])
             puts " #{players[0]} won the game"
             return game_over = true
           elsif !@field.include?('_')
@@ -80,7 +80,7 @@ class Interface
         else
           occupied?(@field, input.to_i, 'O')
           display_field
-          if a.winning_condition(@field, players[1])
+          if new_game.winning_condition(@field, players[1])
             puts " #{players[1]} won the game"
             return game_over = true
           elsif !@field.include?('_')
@@ -90,6 +90,17 @@ class Interface
         end
       end
     end
+  end
+
+  def play_again
+    play = Interface.new
+    game_over = true
+    puts 'play again yes or no?'
+    response = gets.chomp
+    return game_over unless response == 'yes'
+
+    play.user_inputs
+    play.play_again
   end
 end
 # rubocop:enable Metrics/MethodLength,Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
