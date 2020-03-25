@@ -1,6 +1,6 @@
 # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 class Game
-  def winning_condition(arr, _player_name)
+  def winning_condition(arr, *_player_name)
     if (arr[0] == arr[1] && arr[1] == arr[2]) && arr[0..2].none?('_')
       true
     elsif (arr[3] == arr[4] && arr[4] == arr[5]) && arr[3..5].none?('_')
@@ -17,6 +17,8 @@ class Game
       true
     elsif (arr[2] == arr[4] && arr[4] == arr[6]) && !arr.values_at(2, 4, 6).include?('_')
       true
+    else
+      false
     end
   end
 end

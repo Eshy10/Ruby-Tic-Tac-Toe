@@ -17,7 +17,7 @@
 
 ## How to run the game in your terminal
 
-- Run this command line: bin/main.rb
+- Run this command line: bin/play_game.rb
 
 ## Authors
 
