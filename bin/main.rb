@@ -93,4 +93,3 @@ class Interface
   end
 end
 # rubocop:enable Metrics/MethodLength,Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
-
