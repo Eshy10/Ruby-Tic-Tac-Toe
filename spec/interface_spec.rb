@@ -14,16 +14,19 @@ describe Interface do
 
   describe '#user_details' do
     it 'should return an array of two players' do
-      expect(interface.user_details).not_to eq([nil])
+      input = interface.user_details
+      expect(input).not_to eq([nil])
+      expect(input.all?(String)).to eq(true)
     end
   end
 
   describe '#occupied?' do
     it 'should check if the cell is occupied with number between 0 and 8' do
       arr = %w[_ _ _ _ _ _ _ _ _]
-      sym = 'X' || 'O'
+      sym = 'X'
       index = gets.chomp.to_i
       expect(interface.occupied?(arr, index, sym)).not_to eq('_')
+      expect(arr[index]).to eq(sym)
     end
   end
 
