@@ -96,7 +96,7 @@ class Interface
     play = Interface.new
     game_over = true
     puts 'play again yes or no?'
-    response = gets.chomp
+    response = gets.chomp.downcase
     return game_over unless response == 'yes'
 
     play.user_inputs
